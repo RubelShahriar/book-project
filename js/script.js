@@ -14,11 +14,17 @@ const searchButton = () => {
 
 // find total search result
 const displayBookDiv = (data) => {
-    const result = document.getElementById('result');
     result.textContent = '';
-    const para = document.createElement('p');
-    para.innerText = `total result : ${data.numFound}`;
-    result.appendChild(para);
+    const noResult = document.getElementById('no-result');
+    noResult.style.display = "none";
+    if(data.numFound === 0){
+        noResult.style.display = "block";
+    }else{
+        const result = document.getElementById('result');
+        const para = document.createElement('p');
+        para.innerText = `total result : ${data.numFound}`;
+        result.appendChild(para);
+    }
 
 
     // display books result and info
